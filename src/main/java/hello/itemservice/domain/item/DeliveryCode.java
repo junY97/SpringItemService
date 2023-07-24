@@ -9,5 +9,18 @@ package hello.itemservice.domain.item;
  */
 public class DeliveryCode {
     private String code;
+
     private String displayName;
+
+    public DeliveryCode(String code, String displayName) {
+        this.code = code;
+        this.displayName = displayName;
+    }
+    public String getCode() {
+        return code;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
 }
