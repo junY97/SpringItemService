@@ -5,6 +5,7 @@ import hello.itemservice.domain.item.Item;
 import hello.itemservice.domain.item.ItemRepository;
 import hello.itemservice.domain.item.ItemType;
 import jakarta.annotation.PostConstruct;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,12 @@ import java.util.Map;
 @Slf4j
 public class BasicItemController {
     private final ItemRepository itemRepository;
+
+    @PostConstruct
+    public void setLang() {
+//        Locale.setDefault(Locale.KOREA);
+//        System.out.println(Locale.getDefault());
+    }
 
     @ModelAttribute("regions")
     public Map<String, String> regions() {
@@ -54,7 +61,7 @@ public class BasicItemController {
     }
 
     @GetMapping
-    public String items(Model model) {
+    public String items(Model model, HttpServletRequest request) {
         List<Item> items = itemRepository.findAll();
         model.addAttribute("items", items);
         return "basic/items";
