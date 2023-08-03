@@ -48,6 +48,13 @@ public class ValidationItemControllerV3 {
 
     @PostMapping("/add")
     public String addItem(@ModelAttribute @Validated Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+        //특정 필드가 아닌 복합 룰 검증
+        if (item.getPrice() != null && item.getQuantity() != null) {
+            int resultPrice = item.getPrice() * item.getQuantity();
+            if (resultPrice < 10000) {
+                bindingResult.addError(new ObjectError("item", new String[]{"totalPriceMin"}, new Object[]{10000, resultPrice}, "가격 * 수량의 합은 10,000원 이상이어야 합니다. 현재값 = "+ resultPrice));
+            }
+        }
 
         if (bindingResult.hasErrors()) {
             log.info("errors = {} ", bindingResult);
