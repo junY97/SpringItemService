@@ -1,4 +1,4 @@
-package hello.itemservice.servlet;
+package hello.itemservice.exception.servlet;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
