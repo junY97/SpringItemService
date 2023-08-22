@@ -35,7 +35,7 @@ public class LogInterceptor implements HandlerInterceptor {
         }
 
 
-        log.info("REQUEST [{}][{}][{}]", uuid, requestURI, handler);
+        log.info("REQUEST [{}][{}][{}]", uuid, request.getDispatcherType(), handler);
 
         return true;
     }
@@ -49,7 +49,7 @@ public class LogInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         String requestURI = request.getRequestURI();
         String logId = (String) request.getAttribute(LOG_ID);
-        log.info("RESPONSE [{}][{}][{}]",logId, requestURI, handler);
+        log.info("RESPONSE [{}][{}][{}]",logId, request.getDispatcherType(), handler);
 
         if (ex != null) {
             log.error("afterCompletion error!!", ex);
