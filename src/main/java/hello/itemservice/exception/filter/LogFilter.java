@@ -1,4 +1,4 @@
-package hello.itemservice.web.filter;
+package hello.itemservice.exception.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

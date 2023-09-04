@@ -1,16 +1,15 @@
 package hello.itemservice;
 
-import hello.itemservice.web.argumentresolver.LoginMemberArgumentResolver;
-import hello.itemservice.web.filter.LogFilter;
-import hello.itemservice.web.filter.LoginCheckFilter;
-import hello.itemservice.web.interceptor.LogInterceptor;
+import hello.itemservice.exception.filter.LogFilter;
+import hello.itemservice.exception.filter.LoginCheckFilter;
+import hello.itemservice.exception.interceptor.LogInterceptor;
+import hello.itemservice.exception.resolver.MyHandleExceptionResolver;
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;
-import lombok.extern.java.Log;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -47,6 +46,11 @@ public class WebConfig implements WebMvcConfigurer {
         filterRegistrationBean.addUrlPatterns("/*");
 
         return filterRegistrationBean;
+    }
+
+    @Override
+    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        resolvers.add(new MyHandleExceptionResolver());
     }
 
     @Override

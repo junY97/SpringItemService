@@ -1,4 +1,4 @@
-package hello.itemservice.web.interceptor;
+package hello.itemservice.exception.interceptor;
 
 import hello.itemservice.web.SessionConst;
 import jakarta.servlet.http.HttpServletRequest;
