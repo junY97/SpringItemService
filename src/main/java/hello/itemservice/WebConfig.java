@@ -4,6 +4,7 @@ import hello.itemservice.exception.filter.LogFilter;
 import hello.itemservice.exception.filter.LoginCheckFilter;
 import hello.itemservice.exception.interceptor.LogInterceptor;
 import hello.itemservice.exception.resolver.MyHandleExceptionResolver;
+import hello.itemservice.exception.resolver.UserHandlerExceptionResolver;
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -51,6 +52,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
         resolvers.add(new MyHandleExceptionResolver());
+        resolvers.add(new UserHandlerExceptionResolver());
     }
 
     @Override
