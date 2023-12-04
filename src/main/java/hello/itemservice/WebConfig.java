@@ -9,6 +9,7 @@ import hello.itemservice.typeconverter.converter.IntegerToStringConverter;
 import hello.itemservice.typeconverter.converter.IpPortToStringConverter;
 import hello.itemservice.typeconverter.converter.StringToIntegerConverter;
 import hello.itemservice.typeconverter.converter.StringToIpPortConverter;
+import hello.itemservice.typeconverter.formatter.MyNumberFormatter;
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -36,10 +37,13 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new StringToIntegerConverter());
-        registry.addConverter(new IpPortToStringConverter());
-        registry.addConverter(new IntegerToStringConverter());
+//        registry.addConverter(new StringToIntegerConverter());
+//        registry.addConverter(new IntegerToStringConverter());
         registry.addConverter(new StringToIpPortConverter());
+        registry.addConverter(new IpPortToStringConverter());
+
+        //추가
+        registry.addFormatter(new MyNumberFormatter());
     }
 
     @Bean
