@@ -1,0 +1,20 @@
+package hello.itemservice.upload.controller;
+
+import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+
+/**
+ * @author junyeong.jo .
+ * @since 2023-12-08
+ */
+
+@Data
+public class ItemForm {
+    private Long itemId;
+    private String itemName;
+    private MultipartFile attachFile;
+    private List<MultipartFile> imageFiles;
+
+}
